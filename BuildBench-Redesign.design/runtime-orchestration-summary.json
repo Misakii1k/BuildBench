@@ -1,0 +1,626 @@
+{
+  "project": {
+    "resolvedLane": "library_bound",
+    "selectedIntentWorkflowRead": true,
+    "contextRequirementsLoaded": [
+      {
+        "path": "shared-runtime/runtime-boundaries/lane-runtime-contracts.md",
+        "readStatus": "loaded",
+        "bodyRead": true
+      },
+      {
+        "path": "shared-runtime/agent-dispatch-runtime/lane-dispatch-index.md",
+        "readStatus": "loaded",
+        "bodyRead": true
+      },
+      {
+        "path": "delivery-quality/page-rendering-quality-gate.md",
+        "readStatus": "loaded",
+        "bodyRead": true
+      },
+      {
+        "path": "intent-workflows/intent-page-library-bound/INTENT_WORKFLOW.md",
+        "readStatus": "loaded",
+        "bodyRead": true
+      },
+      {
+        "path": "intent-workflows/intent-page-library-bound/dispatch-contract.md",
+        "readStatus": "loaded",
+        "bodyRead": true
+      },
+      {
+        "path": "intent-workflows/intent-page-library-bound/library-bound-page-runtime.md",
+        "readStatus": "loaded",
+        "bodyRead": true
+      },
+      {
+        "path": "intent-workflows/intent-page-library-bound/start-library-bound-project.md",
+        "readStatus": "loaded",
+        "bodyRead": true
+      },
+      {
+        "path": "intent-workflows/intent-page-library-bound/orchestration-summary-fields.md",
+        "readStatus": "loaded",
+        "bodyRead": true
+      },
+      {
+        "path": "intent-workflows/intent-page-library-bound/design-library-ingestion.md",
+        "readStatus": "loaded",
+        "bodyRead": true
+      },
+      {
+        "path": "intent-workflows/intent-page-library-bound/design-token-fidelity-rules.md",
+        "readStatus": "loaded",
+        "bodyRead": true
+      },
+      {
+        "path": "intent-workflows/intent-page-library-bound/component-conformance-rules.md",
+        "readStatus": "loaded",
+        "bodyRead": true
+      },
+      {
+        "path": "intent-workflows/intent-page-library-bound/icon-source-priority-rules.md",
+        "readStatus": "loaded",
+        "bodyRead": true
+      },
+      {
+        "path": "shared-runtime/design-artifact-formats/design-project-file-format.md",
+        "readStatus": "loaded",
+        "bodyRead": true
+      }
+    ],
+    "contextReadScope": "library-bound lane only",
+    "validationRunDiscipline": "main-agent-only",
+    "lowValueCallWatchdog": {
+      "noProgressNextAction": "dispatch page sub-agent immediately after summary write"
+    },
+    "deviceType": "desktop",
+    "dashboardMode": true,
+    "expectedDispatches": [
+      {
+        "nodeId": "page-buildbench-desktop",
+        "pageId": "page-buildbench-desktop",
+        "targetPageId": "page-buildbench-desktop",
+        "packetType": "LibraryBoundPagePacket",
+        "status": "completed",
+        "changedFiles": [
+          "pages/buildbench-desktop.html"
+        ],
+        "toolCallLedger": {
+          "source": "main-agent-runtime-trace",
+          "traceDigest": "subagent-completion-buildbench-desktop",
+          "todoWriteCalls": 0,
+          "previewCalls": 0,
+          "validationScriptCalls": 0,
+          "helperScriptWrites": 0
+        },
+        "recordedAt": "2026-07-25T09:17:41.030Z",
+        "source": "record-dispatch-completion.mjs"
+      }
+    ],
+    "dispatchPreflightManifest": [
+      {
+        "nodeId": "page-buildbench-desktop",
+        "packetType": "LibraryBoundPagePacket",
+        "allowedWritePaths": [
+          "pages/buildbench-desktop.html"
+        ],
+        "toolPolicy": {
+          "todoWriteAllowed": false,
+          "validationScriptsAllowed": false,
+          "previewAllowed": false,
+          "helperScriptsAllowed": false,
+          "designFileWriteAllowed": false,
+          "allowedWritePaths": [
+            "pages/buildbench-desktop.html"
+          ]
+        }
+      }
+    ],
+    "mainAgentPostDispatchMutations": [],
+    "validationHistory": [
+      {
+        "reportPath": "validation-report.json",
+        "reportHash": "a4a658d5128d42c5158ed24ea6c0af4f3c7a39d6454722ce27dce2554a07cb6a",
+        "checkedAt": "2026-07-25T09:17:47.430Z",
+        "success": false,
+        "exitCode": 1,
+        "renderBlockingErrorCount": 4,
+        "repairPlanHints": [],
+        "errorSignatures": [
+          {
+            "errorClass": "head-infrastructure",
+            "normalized": "[html-head-style] buildbench-desktop.html: found 1 custom <style> block(s) in <head>. The <head> is owned by apply-html-head-contract.mjs; move custom styles before </body> or re-run apply-html-head-contract.mjs <css-path> <html-file> --replace-head to relocate them.",
+            "signature": "91b77b34f59b5382ac58447056b79a3eb274d98783acc6018e0d5c131347e234"
+          },
+          {
+            "errorClass": "app-shell-viewport",
+            "normalized": "[app-shell-viewport] pages/buildbench-desktop.html: viewportMode is app-shell but data-viewport-mode=\"app-shell\" is missing on the shell container.",
+            "signature": "075ed32465230cb3ba52b728618a38358f1f611bad4d662151c67b1b5073ff08"
+          },
+          {
+            "errorClass": "app-shell-viewport",
+            "normalized": "[app-shell-viewport] pages/buildbench-desktop.html: app-shell pages must declare data-scroll-region=\"primary\" on a class list containing overflow-y-auto.",
+            "signature": "f804a9a376645bc6f2d3f82d073df7518bb06ee61b4c5b8d2d5958ef3cc4046a"
+          },
+          {
+            "errorClass": "app-shell-viewport",
+            "normalized": "[app-shell-viewport] pages/buildbench-desktop.html: app-shell page still looks like natural document flow (min-h-screen) without a complete internal scroll shell.",
+            "signature": "9b06d5c1c5e442fb295f10aecb3b5db8f0b3e31006047dd9019281bb4b85584d"
+          }
+        ],
+        "terminalState": null
+      }
+    ],
+    "validationRepairLedger": [
+      {
+        "failedReportPath": "validation-report.json",
+        "failedReportHash": "a4a658d5128d42c5158ed24ea6c0af4f3c7a39d6454722ce27dce2554a07cb6a",
+        "repairWorkflowReadPath": "intent-workflows/intent-project-mutation/main-agent-repair-workflow.md",
+        "repairStartedAt": "2026-07-25T09:18:06.746Z",
+        "repairEntryStatus": "started-awaiting-owner-batch-repair",
+        "ownerTriage": [
+          {
+            "owner": "main-agent",
+            "errorClass": "head-infrastructure",
+            "affectedFiles": [],
+            "repairScope": "run_apply_html_head_replace_once",
+            "strategy": "no-validator-source-read"
+          },
+          {
+            "owner": "main-agent",
+            "errorClass": "unknown-blocking",
+            "affectedFiles": [],
+            "repairScope": "read validation report, classify owner, then use the narrowest targeted repair",
+            "strategy": "no validator source read; targeted affected-file excerpt only"
+          },
+          {
+            "owner": "main-agent",
+            "errorClass": "unknown-blocking",
+            "affectedFiles": [],
+            "repairScope": "read validation report, classify owner, then use the narrowest targeted repair",
+            "strategy": "no validator source read; targeted affected-file excerpt only"
+          },
+          {
+            "owner": "main-agent",
+            "errorClass": "unknown-blocking",
+            "affectedFiles": [],
+            "repairScope": "read validation report, classify owner, then use the narrowest targeted repair",
+            "strategy": "no validator source read; targeted affected-file excerpt only"
+          }
+        ],
+        "repairPlanHints": [],
+        "repairActions": [],
+        "revalidationReportPath": null,
+        "revalidationReportHash": null,
+        "revalidationSuccess": null,
+        "blockedReason": null
+      }
+    ],
+    "repairEntryEvidence": [
+      {
+        "failedReportPath": "validation-report.json",
+        "failedReportHash": "a4a658d5128d42c5158ed24ea6c0af4f3c7a39d6454722ce27dce2554a07cb6a",
+        "repairWorkflowReadPath": "intent-workflows/intent-project-mutation/main-agent-repair-workflow.md",
+        "repairStartedAt": "2026-07-25T09:18:06.746Z",
+        "ledgerIndex": 0,
+        "ownerTriageCount": 4,
+        "repairActionCount": 0,
+        "revalidationReportPath": null,
+        "revalidationReportHash": null,
+        "revalidationSuccess": null
+      }
+    ]
+  },
+  "designSource": {
+    "operatingMode": "library-bound",
+    "libraryIdentity": {
+      "name": "TRAE",
+      "id": "dl_builtin_trae",
+      "version": null,
+      "scope": "built-in-global",
+      "path": "c:\\Users\\87850\\.trae-cn\\design_libraries\\dl_builtin_trae\\TRAE(1)",
+      "versionSource": null
+    },
+    "brandPrefix": "",
+    "cssPath": "lib/colors_and_type.css",
+    "actualTokenNameReference": [
+      "--bg-base-default",
+      "--bg-base-secondary",
+      "--bg-base-tertiary",
+      "--bg-overlay-l1",
+      "--bg-overlay-l2",
+      "--bg-overlay-l3",
+      "--bg-overlay-l4",
+      "--bg-menu",
+      "--bg-tooltip",
+      "--bg-invert",
+      "--bg-invert-hover",
+      "--bg-invert-active",
+      "--bg-invert-disabled",
+      "--bg-brand",
+      "--bg-brand-hover",
+      "--bg-brand-disabled",
+      "--bg-brand-popup",
+      "--text-default",
+      "--text-default-hover",
+      "--text-default-active",
+      "--text-secondary",
+      "--text-secondary-hover",
+      "--text-secondary-active",
+      "--text-tertiary",
+      "--text-disabled",
+      "--text-onbrand",
+      "--text-onaccent",
+      "--text-brand",
+      "--text-brand-hover",
+      "--icon-default",
+      "--icon-default-hover",
+      "--icon-default-active",
+      "--icon-secondary",
+      "--icon-secondary-hover",
+      "--icon-secondary-active",
+      "--icon-tertiary",
+      "--icon-disabled",
+      "--icon-onbrand",
+      "--icon-onaccent",
+      "--icon-brand",
+      "--icon-brand-hover",
+      "--border-neutral-l1",
+      "--border-neutral-l2",
+      "--border-neutral-l3",
+      "--border-contrast",
+      "--border-brand",
+      "--status-primary-default",
+      "--status-primary-hover",
+      "--status-primary-active",
+      "--status-success-default",
+      "--status-success-hover",
+      "--status-success-active",
+      "--status-alert-default",
+      "--status-alert-hover",
+      "--status-alert-active",
+      "--status-warning-default",
+      "--status-warning-hover",
+      "--status-warning-active",
+      "--status-error-default",
+      "--status-error-hover",
+      "--status-error-active",
+      "--status-primary-surface-l1",
+      "--status-primary-surface-l2",
+      "--status-primary-surface-l3",
+      "--status-success-surface-l1",
+      "--status-success-surface-l2",
+      "--status-success-surface-l3",
+      "--status-alert-surface-l1",
+      "--status-alert-surface-l2",
+      "--status-alert-surface-l3",
+      "--status-warning-surface-l1",
+      "--status-warning-surface-l2",
+      "--status-warning-surface-l3",
+      "--status-error-surface-l1",
+      "--status-error-surface-l2",
+      "--status-error-surface-l3",
+      "--code-text",
+      "--code-doc",
+      "--code-link",
+      "--code-number",
+      "--code-action",
+      "--code-instruction",
+      "--code-function",
+      "--code-constant",
+      "--code-parameter",
+      "--code-attribute",
+      "--code-tag",
+      "--radius-2",
+      "--radius-4",
+      "--radius-6",
+      "--radius-8",
+      "--radius-10",
+      "--radius-full",
+      "--radius-sm",
+      "--radius-md",
+      "--radius-lg",
+      "--radius-xl",
+      "--spacer-4",
+      "--spacer-6",
+      "--spacer-8",
+      "--spacer-12",
+      "--spacer-16",
+      "--spacer-24",
+      "--spacer-32",
+      "--spacer-40",
+      "--font-family-default",
+      "--font-family-heading",
+      "--font-family-mono",
+      "--font-weight-default",
+      "--font-weight-code",
+      "--font-weight-medium",
+      "--font-weight-strong",
+      "--body-xs-font-size",
+      "--body-xs-font-weight",
+      "--body-xs-line-height",
+      "--body-sm-font-size",
+      "--body-sm-font-weight",
+      "--body-sm-line-height",
+      "--body-sm-strong-font-size",
+      "--body-sm-strong-font-weight",
+      "--body-md-font-size",
+      "--body-md-font-weight",
+      "--body-md-line-height",
+      "--body-lg-font-size",
+      "--body-lg-font-weight",
+      "--body-lg-line-height",
+      "--heading-xs-font-size",
+      "--heading-xs-font-weight",
+      "--heading-xs-line-height",
+      "--heading-sm-font-size",
+      "--heading-sm-font-weight",
+      "--heading-sm-line-height",
+      "--heading-md-font-size",
+      "--heading-md-font-weight",
+      "--heading-md-line-height",
+      "--heading-lg-font-size",
+      "--heading-lg-font-weight",
+      "--heading-lg-line-height",
+      "--code-terminal-font-family",
+      "--code-terminal-font-size",
+      "--code-terminal-line-height",
+      "--site-canvas",
+      "--viz-ui-bg-chart",
+      "--viz-ui-bg-tooltip",
+      "--viz-ui-chart-title",
+      "--viz-ui-chart-subtitle",
+      "--viz-ui-chart-axis",
+      "--viz-ui-chart-tick",
+      "--viz-ui-legend-label",
+      "--viz-ui-legend-value",
+      "--special-bgtabsoverlay"
+    ],
+    "componentPlan": [
+      {
+        "slug": "page-header",
+        "previewFile": "c:\\Users\\87850\\.trae-cn\\design_libraries\\dl_builtin_trae\\TRAE(1)\\preview\\component-page-header.html",
+        "contractFile": "c:\\Users\\87850\\.trae-cn\\design_libraries\\dl_builtin_trae\\TRAE(1)\\components\\page-header.json"
+      },
+      {
+        "slug": "stat-card",
+        "previewFile": "c:\\Users\\87850\\.trae-cn\\design_libraries\\dl_builtin_trae\\TRAE(1)\\preview\\component-stat-card.html",
+        "contractFile": "c:\\Users\\87850\\.trae-cn\\design_libraries\\dl_builtin_trae\\TRAE(1)\\components\\stat-card.json"
+      },
+      {
+        "slug": "cards",
+        "previewFile": "c:\\Users\\87850\\.trae-cn\\design_libraries\\dl_builtin_trae\\TRAE(1)\\preview\\component-cards.html",
+        "contractFile": "c:\\Users\\87850\\.trae-cn\\design_libraries\\dl_builtin_trae\\TRAE(1)\\components\\cards.json"
+      },
+      {
+        "slug": "buttons",
+        "previewFile": "c:\\Users\\87850\\.trae-cn\\design_libraries\\dl_builtin_trae\\TRAE(1)\\preview\\component-buttons.html",
+        "contractFile": "c:\\Users\\87850\\.trae-cn\\design_libraries\\dl_builtin_trae\\TRAE(1)\\components\\buttons.json"
+      },
+      {
+        "slug": "tabs",
+        "previewFile": "c:\\Users\\87850\\.trae-cn\\design_libraries\\dl_builtin_trae\\TRAE(1)\\preview\\component-tabs.html",
+        "contractFile": "c:\\Users\\87850\\.trae-cn\\design_libraries\\dl_builtin_trae\\TRAE(1)\\components\\tabs.json"
+      },
+      {
+        "slug": "status-bar",
+        "previewFile": "c:\\Users\\87850\\.trae-cn\\design_libraries\\dl_builtin_trae\\TRAE(1)\\preview\\component-status-bar.html",
+        "contractFile": "c:\\Users\\87850\\.trae-cn\\design_libraries\\dl_builtin_trae\\TRAE(1)\\components\\status-bar.json"
+      },
+      {
+        "slug": "setting-row",
+        "previewFile": "c:\\Users\\87850\\.trae-cn\\design_libraries\\dl_builtin_trae\\TRAE(1)\\preview\\component-setting-row.html",
+        "contractFile": "c:\\Users\\87850\\.trae-cn\\design_libraries\\dl_builtin_trae\\TRAE(1)\\components\\setting-row.json"
+      },
+      {
+        "slug": "dialog",
+        "previewFile": "c:\\Users\\87850\\.trae-cn\\design_libraries\\dl_builtin_trae\\TRAE(1)\\preview\\component-dialog.html",
+        "contractFile": "c:\\Users\\87850\\.trae-cn\\design_libraries\\dl_builtin_trae\\TRAE(1)\\components\\dialog.json"
+      },
+      {
+        "slug": "tag",
+        "previewFile": "c:\\Users\\87850\\.trae-cn\\design_libraries\\dl_builtin_trae\\TRAE(1)\\preview\\component-tag.html",
+        "contractFile": "c:\\Users\\87850\\.trae-cn\\design_libraries\\dl_builtin_trae\\TRAE(1)\\components\\tag.json"
+      },
+      {
+        "slug": "alert",
+        "previewFile": "c:\\Users\\87850\\.trae-cn\\design_libraries\\dl_builtin_trae\\TRAE(1)\\preview\\component-alert.html",
+        "contractFile": "c:\\Users\\87850\\.trae-cn\\design_libraries\\dl_builtin_trae\\TRAE(1)\\components\\alert.json"
+      },
+      {
+        "slug": "forms",
+        "previewFile": "c:\\Users\\87850\\.trae-cn\\design_libraries\\dl_builtin_trae\\TRAE(1)\\preview\\component-forms.html",
+        "contractFile": "c:\\Users\\87850\\.trae-cn\\design_libraries\\dl_builtin_trae\\TRAE(1)\\components\\forms.json"
+      }
+    ],
+    "tokenFidelity": "strict",
+    "componentConformance": "strict",
+    "designDecisionSummary": "TRAE 浅色适配：保名改值策略，dark token 浅色重映射；品牌绿 #32F08C 保留为唯一主 CTA；SF Pro Text/Heading + JetBrains Mono 字体；radius 2/4/6/8/10px；spacer 4-40px 尺度继承；状态色四档体系贯通卡片/标签/状态栏/日志。",
+    "forbiddenInventedComponents": [],
+    "allowedComponents": [
+      "page-header",
+      "stat-card",
+      "cards",
+      "buttons",
+      "tabs",
+      "status-bar",
+      "setting-row",
+      "dialog",
+      "tag",
+      "alert",
+      "forms"
+    ],
+    "iconAssets": {
+      "source": "assets/icons",
+      "projectIconDir": "assets/icons/dl_builtin_trae",
+      "libraryKey": "dl_builtin_trae",
+      "renderMethod": "css-mask",
+      "pathTemplate": "../assets/icons/dl_builtin_trae/{name}.svg",
+      "availableNames": [
+        "alert-circle",
+        "alert-triangle",
+        "alert",
+        "apple",
+        "arrow-down",
+        "arrow-expand",
+        "arrow-left",
+        "arrow-minimize",
+        "arrow-right-to-line",
+        "arrow-right",
+        "arrow-up-right",
+        "arrow-up",
+        "at",
+        "atom",
+        "bar",
+        "bell",
+        "box",
+        "bug",
+        "calendar",
+        "check-circle",
+        "check",
+        "chevron-down",
+        "chevron-right",
+        "chevron-up",
+        "circle",
+        "clock",
+        "cmd",
+        "code",
+        "columns",
+        "copy",
+        "cpu",
+        "dashboard",
+        "dollar",
+        "download",
+        "edit",
+        "extensions",
+        "external",
+        "eye",
+        "file-text",
+        "file",
+        "files",
+        "filter",
+        "folder",
+        "gear",
+        "git",
+        "github",
+        "globe",
+        "grid-2x2",
+        "hash",
+        "heart",
+        "help",
+        "home",
+        "image",
+        "info-circle",
+        "info-square",
+        "info",
+        "key",
+        "layers",
+        "layout",
+        "link",
+        "list",
+        "lock",
+        "log-out",
+        "logo",
+        "mail",
+        "menu",
+        "message-circle",
+        "message-plus",
+        "message-square",
+        "mic",
+        "minus",
+        "moon",
+        "more-h",
+        "mouse",
+        "palette",
+        "panel-bottom",
+        "pause",
+        "play",
+        "plug",
+        "plus",
+        "refresh",
+        "ruler",
+        "scroll-text",
+        "search-menu",
+        "search",
+        "send",
+        "settings",
+        "shield",
+        "sidebar-left",
+        "sidebar-right",
+        "sliders",
+        "sparkles",
+        "square",
+        "star",
+        "sun",
+        "terminal",
+        "trash",
+        "trending-down",
+        "trending-up",
+        "type",
+        "upload",
+        "user-circle",
+        "user",
+        "users",
+        "wrench",
+        "x-circle",
+        "x",
+        "zap"
+      ],
+      "totalCount": 108,
+      "coloringRule": "currentColor by default; override with Library token when needed"
+    },
+    "themeMode": "light"
+  },
+  "pages": [
+    {
+      "nodeId": "page-buildbench-desktop",
+      "htmlSrc": "pages/buildbench-desktop.html",
+      "title": "BuildBench 本地构建台",
+      "deviceType": "desktop",
+      "viewportMode": "app-shell",
+      "viewport": "1280x800",
+      "pageType": "task-driven",
+      "qualityRisks": [
+        "density",
+        "fixed-chrome"
+      ],
+      "componentsRead": [],
+      "componentPlan": [
+        {
+          "slug": "page-header"
+        },
+        {
+          "slug": "stat-card"
+        },
+        {
+          "slug": "cards"
+        },
+        {
+          "slug": "buttons"
+        },
+        {
+          "slug": "tabs"
+        },
+        {
+          "slug": "status-bar"
+        },
+        {
+          "slug": "setting-row"
+        },
+        {
+          "slug": "dialog"
+        },
+        {
+          "slug": "tag"
+        },
+        {
+          "slug": "alert"
+        },
+        {
+          "slug": "forms"
+        }
+      ]
+    }
+  ]
+}

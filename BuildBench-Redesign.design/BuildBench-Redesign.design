@@ -1,0 +1,33 @@
+{
+  "data": [
+    {
+      "id": "page-buildbench-desktop",
+      "title": "BuildBench 本地构建台",
+      "type": "page",
+      "version": 1,
+      "createdAt": 1753497600000,
+      "devMetadata": {
+        "htmlSrc": "pages/buildbench-desktop.html",
+        "interactions": []
+      },
+      "canvasData": {
+        "x": 0,
+        "y": 0,
+        "group": 0
+      }
+    }
+  ],
+  "config": {
+    "autoLayout": true,
+    "deviceType": "desktop",
+    "projectName": "BuildBench 本地构建台 · TRAE 浅色适配",
+    "designLibrary": {
+      "name": "TRAE",
+      "id": "dl_builtin_trae",
+      "version": null,
+      "scope": "built-in-global",
+      "path": "c:\\Users\\87850\\.trae-cn\\design_libraries\\dl_builtin_trae\\TRAE(1)",
+      "versionSource": null
+    }
+  }
+}

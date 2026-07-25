@@ -1,0 +1,133 @@
+/**
+ * BuildBench-Redesign · TRAE 浅色适配覆盖层
+ *
+ * 策略：保名改值（preserve token names, remap values for light theme）
+ * - 所有 token 名 100% 沿用 TRAE 原名（满足 actualTokenNameReference 保真度）
+ * - 仅重映射值为浅色主题可读变体
+ * - 品牌绿 #32F08C、状态色保留；文本型品牌/状态色采用 Library 内更深色阶保 AA
+ * - radius / spacer / font token 不改值（尺度完全继承）
+ *
+ * 加载顺序：colors_and_type.css → components.css → tokens-light-adaptation.css（本文件必须在最后）
+ */
+
+:root {
+  /* === bg 浅色重映射 === */
+  --bg-base-default: #FFFFFF;            /* 画布/应用基底：dark #1A1B1D → 浅色白 */
+  --bg-base-secondary: #F7F8FA;          /* 卡片/面板/状态栏面：dark #222427 → 浅灰 */
+  --bg-base-tertiary: #EFF1F4;           /* 内陷/变体面：dark #2A2D31 → 更深浅灰 */
+  --bg-overlay-l1: rgba(26, 27, 29, 0.04);   /* 轻叠加：dark rgba(224,226,242,.04) → 深色低透 */
+  --bg-overlay-l2: rgba(26, 27, 29, 0.06);   /* 次按钮/悬停 */
+  --bg-overlay-l3: rgba(26, 27, 29, 0.08);   /* 选中态/活动 tab */
+  --bg-overlay-l4: rgba(26, 27, 29, 0.12);   /* neutral-strong 标签底 */
+  --bg-menu: #FFFFFF;                    /* 菜单/弹层：浅底白 */
+  --bg-tooltip: #1A1B1D;                 /* 悬浮提示保留深底浅字保对比 */
+  --bg-invert: #1A1B1D;                  /* 反色面：dark #DADDE5 → 深底（浅色主题反色） */
+  --bg-invert-hover: #2A2D31;            /* 反色悬停 */
+  --bg-invert-active: #404A4F;           /* 反色按下 */
+  --bg-invert-disabled: rgba(26, 27, 29, 0.12); /* 反色禁用 */
+
+  /* === bg-brand 保留品牌绿（主 CTA） === */
+  --bg-brand: #32F08C;                   /* 品牌绿面：保留 */
+  --bg-brand-hover: #0FDC78;             /* 品牌绿悬停：保留 */
+  --bg-brand-disabled: rgba(50, 240, 140, 0.2); /* 品牌绿禁用：保留 */
+  --bg-brand-popup: rgba(50, 240, 140, 0.14);   /* 品牌软面：略提对比 */
+
+  /* === text 浅色重映射 === */
+  --text-default: #1A1B1D;               /* 主文本：dark #D1D3DB → 近黑 */
+  --text-default-hover: #000000;         /* 主文本悬停：纯黑 */
+  --text-default-active: #000000;        /* 主文本按下：纯黑 */
+  --text-secondary: #5E6168;             /* 次文本：dark #9599A6 → 中灰 */
+  --text-secondary-hover: #1A1B1D;       /* 次文本悬停 */
+  --text-secondary-active: #1A1B1D;      /* 次文本按下 */
+  --text-tertiary: #8A8F98;              /* 三级文本/标签：dark #666B75 → 浅灰 */
+  --text-disabled: #B0B4BB;              /* 禁用：dark #666B75 → 更浅灰 */
+  --text-onbrand: #0C0C0D;               /* 品牌绿上文字：保留深色 */
+  --text-onaccent: #0C0C0D;              /* 强调色上文字：保留深色 */
+
+  /* === text-brand 浅底 AA（用 green-700） === */
+  --text-brand: #0AB861;                 /* 品牌文本：dark #32F08C → green-700 #0AB861 保 AA */
+  --text-brand-hover: #05994F;           /* 品牌文本悬停：green-800 */
+
+  /* === icon 浅色重映射 === */
+  --icon-default: #1A1B1D;               /* 主图标：dark #D1D3DB → 近黑 */
+  --icon-default-hover: #000000;         /* 主图标悬停 */
+  --icon-default-active: #000000;        /* 主图标按下 */
+  --icon-secondary: #5E6168;             /* 次图标：dark #9599A6 → 中灰 */
+  --icon-secondary-hover: #1A1B1D;       /* 次图标悬停 */
+  --icon-secondary-active: #1A1B1D;      /* 次图标按下 */
+  --icon-tertiary: #8A8F98;              /* 三级图标：dark #666B75 → 浅灰 */
+  --icon-disabled: #B0B4BB;              /* 禁用图标 */
+  --icon-onbrand: #0C0C0D;               /* 品牌绿上图标：保留深色 */
+  --icon-onaccent: #0C0C0D;              /* 强调色上图标：保留深色 */
+
+  /* === icon-brand 浅底 AA（用 green-700） === */
+  --icon-brand: #0AB861;                 /* 品牌图标：dark #32F08C → green-700 保 AA */
+  --icon-brand-hover: #05994F;           /* 品牌图标悬停：green-800 */
+
+  /* === border 浅色重映射 === */
+  --border-neutral-l1: rgba(26, 27, 29, 0.10);   /* 主分隔：dark rgba(224,226,242,.10) → 深色低透 */
+  --border-neutral-l2: rgba(26, 27, 29, 0.16);   /* 次分隔/按钮边 */
+  --border-neutral-l3: rgba(26, 27, 29, 0.20);   /* 强分隔 */
+  --border-contrast: #1A1B1D;                    /* 对比边：dark #FFFFFF → 近黑 */
+  --border-brand: #32F08C;                       /* 品牌边：保留 */
+
+  /* === status 保留状态色（浅底文本场景用 active 变体保 AA） === */
+  --status-primary-default: #387BFF;     /* 信息/命令日志色：保留 */
+  --status-primary-hover: #4C88FF;       /* 保留 */
+  --status-primary-active: #1759DD;      /* 保留 */
+  --status-success-default: #33C192;     /* 成功/在线：保留 */
+  --status-success-hover: #5ED4AD;       /* 保留 */
+  --status-success-active: #27B082;      /* 保留 */
+  --status-alert-default: #D29D00;       /* 保留 */
+  --status-alert-hover: #DFB949;         /* 保留 */
+  --status-alert-active: #AB8820;        /* 保留 */
+  --status-warning-default: #D27E24;     /* 警告/未连接：保留 */
+  --status-warning-hover: #D78B28;       /* 保留 */
+  --status-warning-active: #B46510;      /* 保留 */
+  --status-error-default: #F65A5A;       /* 错误/未配置：保留（面用） */
+  --status-error-hover: #F86262;         /* 保留 */
+  --status-error-active: #B33636;        /* 保留（浅底文本场景用此 active 保 AA） */
+  /* status surface tints 保留（软标签底） */
+  --status-primary-surface-l1: rgba(53, 121, 255, 0.18);
+  --status-primary-surface-l2: rgba(53, 121, 255, 0.28);
+  --status-primary-surface-l3: rgba(53, 121, 255, 0.36);
+  --status-success-surface-l1: rgba(0, 165, 110, 0.18);
+  --status-success-surface-l2: rgba(0, 165, 110, 0.28);
+  --status-success-surface-l3: rgba(0, 165, 110, 0.36);
+  --status-alert-surface-l1: rgba(210, 157, 0, 0.16);
+  --status-alert-surface-l2: rgba(210, 157, 0, 0.28);
+  --status-alert-surface-l3: rgba(210, 157, 0, 0.36);
+  --status-warning-surface-l1: rgba(210, 126, 36, 0.16);
+  --status-warning-surface-l2: rgba(210, 126, 36, 0.28);
+  --status-warning-surface-l3: rgba(210, 126, 36, 0.36);
+  --status-error-surface-l1: rgba(246, 70, 70, 0.18);
+  --status-error-surface-l2: rgba(246, 70, 70, 0.28);
+  --status-error-surface-l3: rgba(246, 70, 70, 0.36);
+
+  /* === code 浅底可读映射（保名改值，不新增 token 名） === */
+  --code-text: #343941;                  /* 日志正文：dark #E0E3EE → 深灰 */
+  --code-doc: #7F838C;                   /* 日志时间戳/注释：保留（浅底可读） */
+  --code-link: #3C7EFF;                  /* 链接：保留 */
+  --code-number: #B5379E;                /* 数字：dark #F48CCA → 浅底可读变暗 */
+  --code-action: #8A5FD4;                /* 动作：dark #B38CFF → 浅底可读变暗 */
+  --code-instruction: #9D5FD9;           /* 指令：dark #F0D8FF → 浅底可读变暗 */
+  --code-function: #C26A3F;              /* 函数：dark #F29D79 → 浅底可读变暗 */
+  --code-constant: #2E7DD6;              /* 常量：dark #80BBFF → 浅底可读变暗 */
+  --code-parameter: #3D9E68;             /* 参数：dark #82D99F → 浅底可读变暗 */
+  --code-attribute: #A89230;             /* 属性：dark #DED47E → 浅底可读变暗 */
+  --code-tag: #C73E4A;                   /* 标签：dark #F2858C → 浅底可读变暗 */
+
+  /* === layout aliases 跟随浅色 === */
+  --site-canvas: #FFFFFF;                /* 画布：dark #1A1B1D → 白 */
+  --viz-ui-bg-chart: #F7F8FA;            /* 图表底：dark #202123 → 浅灰 */
+  --viz-ui-bg-tooltip: #1A1B1D;          /* 图表提示：保留深底 */
+  --viz-ui-chart-title: #1A1B1D;         /* 图表标题：dark #D1D3DB → 近黑 */
+  --viz-ui-chart-subtitle: #5E6168;      /* 图表副标题：dark #9599A6 → 中灰 */
+  --viz-ui-chart-axis: rgba(26, 27, 29, 0.16); /* 图表轴：dark rgba(224,226,242,.16) → 深色低透 */
+  --viz-ui-chart-tick: #5E6168;          /* 图表刻度：dark #9599A6 → 中灰 */
+  --viz-ui-legend-label: #5E6168;        /* 图例标签：dark #9599A6 → 中灰 */
+  --viz-ui-legend-value: #1A1B1D;        /* 图例值：dark #D1D3DB → 近黑 */
+
+  /* special-bgtabsoverlay 浅色主题用浅遮罩 */
+  --special-bgtabsoverlay: rgba(0, 0, 0, 0.08);
+}

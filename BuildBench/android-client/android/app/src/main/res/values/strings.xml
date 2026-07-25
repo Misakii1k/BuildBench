@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">BuildBench</string>
+    <string name="title_activity_main">BuildBench</string>
+    <string name="package_name">com.buildbench.remote</string>
+    <string name="custom_url_scheme">com.buildbench.remote</string>
+</resources>

@@ -1,0 +1,12 @@
+# IDE metadata
+.trae/
+.vscode/
+.idea/
+
+# OS junk
+Thumbs.db
+desktop.ini
+.DS_Store
+
+# Logs
+*.log
